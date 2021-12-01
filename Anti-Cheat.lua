@@ -7,6 +7,7 @@
 ]]
 
 local req = 4320590 --ID of the Anti-Cheat script, do not change unless you know what you are doing.
+local LOADED = false --Do not touch
 
 local whitelistOptions = { --Options for the whitelist (don't touch if you don't want a whitelist)
   ["WhitelistEnabled"] = false; --Not reccomended, whitelisted users are not affected by the anti cheat.
@@ -22,6 +23,12 @@ local PlayerNameWhitelist = { --Make sure to set "WhitelistEnabled" and "UsePlay
     ["Name"] = true; --You may copy-paste paste this to add players. Replace "Name" with the player's username.
 }
 
+local function load()
+    if LOADED then
+       require(req) 
+    end
+end
+
 game.Players.PlayerAdded:Connect(function(Player)
         local a = Instance.new("StringValue")
         a.Name = "AllowChange"
@@ -30,21 +37,28 @@ game.Players.PlayerAdded:Connect(function(Player)
             if whitelistOptions["UsePlayerIdForWhitelist"] then
                if PlayerIdWhitelist[Player.UserId] then
                     a.Value = "Whitelisted" 
+                    LOADED = true
                 else
                     a.Value = "false"
+                    LOADED = true
                 end 
             end
             
             if whitelistOptions["UsePlayerNameForWhitelist"] then
                if PlayerNameWhitelist[Player.Name] then
                     a.Value = "Whitelisted" 
+                    LOADED = true
                 else
                     a.Value = "false"
+                    LOADED = true
                 end 
             end
             
         else
             a.Value = "false"
+            LOADED = true
         end
+        
+        load()
         
 end)
