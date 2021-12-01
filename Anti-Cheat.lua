@@ -47,12 +47,4 @@ game.Players.PlayerAdded:Connect(function(Player)
             a.Value = "false"
         end
         
-        local c = script["Anti Cheat Script"]:Clone()
-        c.Name = "AntiCheatScript"
-        
-        local f = Instance.new("Folder")
-        f.Name = "Anti Cheat : "..Player.Name.." : "..Player.UserId
-        f.Parent = Player
-        c.Parent = f
-        
 end)
