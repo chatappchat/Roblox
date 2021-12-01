@@ -1,3 +1,10 @@
+--[[
+    Made by dizzywig2000, for public use. 
+
+    You may use this script in any way.
+
+    MAKE SURE TO PUT THE CODE IN "ServerScriptService"!
+]]
 local Service = game:GetService("DataStoreService")
 local DataStore = Service:GetDataStore("Money")
 local Data
